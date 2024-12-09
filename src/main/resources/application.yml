@@ -1,0 +1,30 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    open-in-view: false # View에서 DB 세션을 열지 않도록 설정
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        transaction.coordinator_class: jdbc # JTA 관련 경고 제거
+  thymeleaf:
+    cache: false # 개발 중에는 Thymeleaf 캐싱 비활성화
+  devtools:
+    livereload:
+      enabled: true # 라이브 리로드 활성화
+    restart:
+      enabled: true # 애플리케이션 재시작 활성화
+  h2:
+    console:
+      enabled: true
+      path: /h2-console # H2 콘솔 경로
+  datasource:
+    url: jdbc:h2:mem:test_security;NON_KEYWORDS=USER
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
